@@ -1,0 +1,43 @@
+name: portfolio
+description: "Ayan's Portfolio"
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: ^3.5.4
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_infinite_marquee: ^1.0.0
+  go_router: ^14.3.0
+  url_launcher: ^6.3.1
+  video_player: ^2.9.2
+  web_smooth_scroll: ^1.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/videos/
+  fonts:
+    - family: GeneralSans
+      fonts:
+        - asset: assets/fonts/GeneralSans-Bold.otf
+        - asset: assets/fonts/GeneralSans-BoldItalic.otf
+        - asset: assets/fonts/GeneralSans-Extralight.otf
+        - asset: assets/fonts/GeneralSans-ExtralightItalic.otf
+        - asset: assets/fonts/GeneralSans-Italic.otf
+        - asset: assets/fonts/GeneralSans-Light.otf
+        - asset: assets/fonts/GeneralSans-LightItalic.otf
+        - asset: assets/fonts/GeneralSans-Medium.otf
+        - asset: assets/fonts/GeneralSans-MediumItalic.otf
+        - asset: assets/fonts/GeneralSans-Regular.otf
+        - asset: assets/fonts/GeneralSans-Semibold.otf
+        - asset: assets/fonts/GeneralSans-SemiboldItalic.otf
+        

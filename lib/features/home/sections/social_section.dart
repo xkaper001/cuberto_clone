@@ -50,7 +50,6 @@ class _SocialSectionState extends State<SocialSection> {
         ValueListenableBuilder(
           valueListenable: widget.scrollController.position.isScrollingNotifier,
           builder: (context, value, child) {
-            log("Scrolling");
             return preHeader(isForward, value);
           },
         ),
@@ -86,7 +85,7 @@ Container preHeader(bool direction, bool isScrolling) {
         );
       },
       frequency: Duration(milliseconds: isScrolling ? 1 : 20),
-      stepOffset: direction ? 3.5 : -3.5,
+      stepOffset: direction ? 4 : -4,
       itemBuilder: (context, index) {
         return const Text(
           'Follow Us',

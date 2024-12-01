@@ -5,7 +5,7 @@ class MenuPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     var center = size.width / 2;
     var paint = Paint()
-      ..color = Color.fromRGBO(0, 0, 0, 1)
+      ..color = const Color.fromRGBO(0, 0, 0, 1)
       ..strokeWidth = 2;
     canvas.drawLine(
       Offset(center / 2, size.height / 2 + 5),

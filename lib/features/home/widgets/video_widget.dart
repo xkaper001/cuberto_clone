@@ -74,7 +74,7 @@ class _VideoStateWidget extends State<VideoWidget> {
                     color: Colors.black,
                   );
           } else {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           }

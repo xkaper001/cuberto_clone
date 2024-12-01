@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'utils/routes.dart';
 import 'utils/style.dart';
 
-void main() { 
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const MainApp());
 }
@@ -16,7 +16,7 @@ class MainApp extends StatelessWidget {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: 'Ayan\'s Portfolio',
-    theme: AppStyles.theme, 
+      theme: AppStyles.theme,
       routerConfig: AppRoutes.router,
     );
   }

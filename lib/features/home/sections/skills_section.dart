@@ -17,14 +17,14 @@ class SkillsSection extends StatelessWidget {
           Expanded(
               child: SizedBox(
                   height: vh * 0.55,
-                  child: VideoWidget(
+                  child: const VideoWidget(
                       'https://cuberto.com/assets/home/summary/1.mp4?3'))),
           Expanded(
               child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
+              const Text(
                 'Quality is more important than\nquantity. One home run is\nbetter than two doubles.',
                 style: TextStyle(
                     fontSize: 40,
@@ -34,7 +34,7 @@ class SkillsSection extends StatelessWidget {
                     fontFamily: 'GeneralSans'),
               ),
               const SizedBox(height: 16),
-              Text(
+              const Text(
                 '                                         ~ Steve Jobs',
                 textAlign: TextAlign.end,
                 style: TextStyle(
@@ -50,7 +50,7 @@ class SkillsSection extends StatelessWidget {
                   border: Border.all(color: Colors.black, width: 0.5),
                   borderRadius: BorderRadius.circular(300),
                 ),
-                child: Center(
+                child: const Center(
                   child: Text(
                     'Github',
                     textAlign: TextAlign.end,

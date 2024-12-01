@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/features/home/models/blog.dart';
 import 'package:portfolio/features/home/sections/featured_projects_section.dart';
 import 'package:portfolio/features/home/sections/skills_section.dart';
 import 'package:portfolio/features/home/sections/social_section.dart';
 import 'package:portfolio/features/home/widgets/video_widget.dart';
 import 'package:portfolio/utils/responsive.dart';
 
+import 'models/project.dart';
 import 'models/social.dart';
+import 'sections/blog_section.dart';
+import 'sections/hero_section.dart';
+import 'sections/philosophy_section.dart';
 import 'widgets/menu_button.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -28,6 +33,39 @@ class _HomeScreenState extends State<HomeScreen> {
     Social(title: 'Twitter', url: 'https://x.com/xkaper001'),
   ];
 
+  final List<Blog> _featuredBlogs = [
+    Blog(
+      title: 'How to Make UI/UX Website // HTML and CSS development',
+      imageUrl:
+          'https://cdn.cuberto.com/cb/upload/b73b0d2feb001c8bd719c808c40ce28b.png',
+    ),
+    Blog(
+      title: 'How to Cook an Emotional Site // Web Development',
+      imageUrl:
+          'https://cdn.cuberto.com/cb/upload/bc24961ad4410b4202a2277bc1c487fb.png',
+    ),
+    Blog(
+      title: 'How to Make Epic Website // Frontend Development',
+      imageUrl:
+          'https://cdn.cuberto.com/cb/upload/480b30071a8533b278c30dd7d9133f09.png',
+    ),
+    Blog(
+      title: 'Cuberto Mouse Follower',
+      imageUrl:
+          'https://cdn.cuberto.com/cb/upload/885fbbc555395f745746b23b73f539f5.png',
+    ),
+    Blog(
+      title: 'Making switch with SVG Distortion Effect',
+      imageUrl:
+          'https://cdn.cuberto.com/cb/upload/99d9ee549abf01940d4b1cfa04734b7d.jpg',
+    ),
+    Blog(
+      title: 'UI/UX Design TIps / Volume 9',
+      imageUrl:
+          'https://cdn.cuberto.com/cb/upload/ef20532e8de88a471d4bd1338dc93414.png',
+    ),
+  ];
+
   @override
   void initState() {
     _scrollController = ScrollController();
@@ -38,12 +76,55 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final vh = MediaQuery.of(context).size.height;
     final vw = MediaQuery.of(context).size.width;
+    final projectList = <Project>[
+      Project(
+        title: 'Punto Pago – The First Super-App in Latin America',
+        imageUrl: 'https://i.ibb.co/MCYZph5/cover.jpg',
+      ),
+      Project(
+        title:
+            'Kelvin Zero – A digital product for passwordless authentication',
+        imageUrl: 'https://i.ibb.co/PM0WrfF/cover2.jpg',
+      ),
+      Project(
+        title: 'Riyadh – Official website of Riyadh, Saudi Arabia\'s capital',
+        imageUrl: 'https://i.ibb.co/kqv0Xtr/cover3.jpg',
+      ),
+      Project(
+        title: 'Magma – The ultimate tool for building in the Web3 era',
+        imageUrl: 'https://i.ibb.co/ZBVrgM6/cover4.jpg',
+      ),
+      Project(
+        title: 'Qvino – Wine marketplace with interactive learning',
+        imageUrl: 'https://i.ibb.co/3YM7chS/cover5.jpg',
+      ),
+      Project(
+        title: 'FlipaClip – The best tool for stop-motion animation',
+        imageUrl: 'https://i.ibb.co/VV5nBdr/cover3.jpg',
+      ),
+      Project(
+        title: 'Zelt – Run HR, IT & Finance in one place',
+        imageUrl: 'https://i.ibb.co/k5PfrVT/cover10.jpg',
+      ),
+      Project(
+        title: 'Potion – Sales tool for increasing conversions',
+        imageUrl: 'https://i.ibb.co/PjFRzVZ/cover7.jpg',
+      ),
+      Project(
+        title: 'Cisco – Cloud based network management',
+        imageUrl: 'https://i.ibb.co/RT0qcqX/cover9.jpg',
+      ),
+      Project(
+        title: 'Ferrumpipe – Galvanized steel metal frame manufacturer',
+        imageUrl: 'https://i.ibb.co/6nG7kWW/cover8.jpg',
+      ),
+    ];
     return Scaffold(
         appBar: AppBar(
           actions: [
             // const Icon(Icons.menu),
             Padding(
-              padding:  EdgeInsets.only(right: vw * 0.04),
+              padding: EdgeInsets.only(right: vw * 0.04),
               child: GestureDetector(
                 child: CustomPaint(
                   size: const Size(64, 32),
@@ -55,11 +136,10 @@ class _HomeScreenState extends State<HomeScreen> {
           backgroundColor: Colors.transparent,
           forceMaterialTransparency: true,
           toolbarHeight: 100,
-
         ),
         extendBodyBehindAppBar: true,
         body: SingleChildScrollView(
-          // physics: NeverScrollableScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           controller: _scrollController,
           child: Column(
             children: [
@@ -80,96 +160,19 @@ class _HomeScreenState extends State<HomeScreen> {
                 alignment: Alignment.center,
                 child: const HeroSection(),
               ),
-              SizedBox(width: vw, child: const VideoWidget('assets/videos/hero.mp4')),
+              SizedBox(
+                  width: vw,
+                  child: const VideoWidget('assets/videos/hero.mp4')),
               const SkillsSection(),
-              const FeaturedProjectsSection(),
-              SocialSection(socials: _socialList,scrollController: _scrollController,)
+              FeaturedProjectsSection(projects: projectList),
+              const PhilosophySection(),
+              BlogSection(featuredBlogs: _featuredBlogs),
+              SocialSection(
+                socials: _socialList,
+                scrollController: _scrollController,
+              )
             ],
           ),
         ));
-  }
-}
-
-class HeroSection extends StatefulWidget {
-  const HeroSection({super.key});
-
-  @override
-  State<HeroSection> createState() => _HeroSectionState();
-}
-
-class _HeroSectionState extends State<HeroSection> {
-  Row row(double rem) => Row(
-        children: [
-          const Spacer(
-            flex: 1,
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'We are a digital',
-                style: TextStyle(fontSize: rem, height: 1),
-              ),
-              Row(
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(150),
-                    child: Container(
-                      height: rem * 1,
-                      width: rem * 1.45,
-                      child: const VideoWidget('assets/videos/header.mp4'),
-                    ),
-                  ),
-
-                  const SizedBox(width: 16),
-                  RichText(
-                    text: TextSpan(
-                      children: [
-                        TextSpan(
-                          text: 'design',
-                          style: TextStyle(
-                            fontStyle: FontStyle.italic,
-                            fontWeight: FontWeight.w300,
-                            fontSize: rem,
-                            height: 1,
-                            fontFamily: 'GeneralSans',
-                          ),
-                        ),
-                        TextSpan(
-                          text: ' and',
-                          style: TextStyle(
-                            fontStyle: FontStyle.normal,
-                            fontWeight: FontWeight.normal,
-                            fontSize: rem,
-                            height: 1,
-                            fontFamily: 'GeneralSans',
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-              Text(
-                'motion agency',
-                style: TextStyle(fontSize: rem, height: 1),
-              ),
-            ],
-          ),
-          const Spacer(
-            flex: 5,
-          ),
-        ],
-      );
-
-  @override
-  Widget build(BuildContext context) {
-    final vw = MediaQuery.of(context).size.width;
-    return ResponsiveLayout(
-      mobileScaffold: row(vw * 0.05),
-      tabletScaffold: row(vw * 0.07),
-      desktopScaffold: row(vw * 0.075),
-    );
   }
 }

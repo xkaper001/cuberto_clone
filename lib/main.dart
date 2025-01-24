@@ -17,7 +17,7 @@ class MainApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Ayan\'s Portfolio',
       theme: AppStyles.theme,
-      routerConfig: AppRoutes.router,
+      routerConfig: AppRoutes.router, 
     );
   }
 }

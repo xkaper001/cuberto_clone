@@ -1,0 +1,18 @@
+{
+  "hosting": {
+    "public": "build/web",
+    "site": "projects-xkaper-dev",
+    
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites" : [
+      {
+        "source" : "/cuberto-clone/",
+        "destination" : "build/web/index.html"
+      }
+    ]
+  }
+}
